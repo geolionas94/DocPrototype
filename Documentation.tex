@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper,headsepline]{scrreprt}
+\usepackage[left= 2.5cm,right = 2cm, bottom = 4 cm]{geometry}
+
+
+% Standard Packages
+\usepackage[utf8]{inputenc}
+
+% If you want to use german then uncomment the following lines
+% with additional character of the American Mathematical Society
+
+%\usepackage[ngerman]{babel}
+%\usepackage{amsfonts}
+%\usepackage{amsmath}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, subfig}
+\graphicspath{{img/}}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\usetikzlibrary{matrix,fadings,calc,positioning,decorations.pathreplacing,arrows}
+\usepackage[nohyperlinks, withpage, smaller]{acronym}
+\bibliographystyle{unsrt}
+
+
+
+% ============= Headings / Foot =============
+\pagestyle{fancy}
+
+\lhead{}
+\chead{}
+\rhead{\slshape \leftmark}
+
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ============= Start of the document =============
+\begin{document}
+
+%These pages rae without head, foot and page number
+\pagestyle{empty}
+\include{FrontCover}
+%%We add an empty page becasue the back of this page has to be empty
+\newpage 
+\thispagestyle{empty}
+\quad  \addtocounter{page}{-1}
+\newpage
+
+\pagestyle{plain}
+\pagenumbering{Roman}
+%Here we add the table of contents before everything else
+\tableofcontents
+
+%After the table of contents we add a list of figures 
+\listoffigures
+
+%And then the abbreviations
+\include{Abbreviations}
+
+% Here we start with the document
+% pagestyle activation for the whole document
+\pagestyle{headings}
+\pagenumbering{arabic}
+\include{Introduction}
+\newpage
+\include{Basics}
+\newpage
+\include{Development}
+
+% ============== THE END ==================
+\end{document}
