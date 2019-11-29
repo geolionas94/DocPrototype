@@ -1,79 +1,95 @@
-\documentclass[12pt,a4paper,headsepline]{scrreprt}
+\documentclass[12pt, a4paper, headsepline]{scrreprt}
 \usepackage[left= 2.5cm,right = 2cm, bottom = 4 cm]{geometry}
 
+% If you want to use german then uncomment the following lines
+%\usepackage[ngerman]{babel}
 
 % Standard Packages
 \usepackage[utf8]{inputenc}
-
-% If you want to use german then uncomment the following lines
-% with additional character of the American Mathematical Society
-
-%\usepackage[ngerman]{babel}
-%\usepackage{amsfonts}
-%\usepackage{amsmath}
-
+\usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx, subfig}
-\graphicspath{{img/}}
+% Gives good header and footer functionality
 \usepackage{fancyhdr}
 \usepackage{lmodern}
 \usepackage{color}
 \usepackage{tikz}
 \usepackage{float}
 \usepackage{listings}
-\usepackage{color}
 \usepackage{hyperref}
-\usetikzlibrary{matrix,fadings,calc,positioning,decorations.pathreplacing,arrows}
 \usepackage[nohyperlinks, withpage, smaller]{acronym}
+\usetikzlibrary{matrix,fadings,calc,positioning,decorations.pathreplacing,arrows}
 \bibliographystyle{unsrt}
-
-
+% Set the graphics path
+\graphicspath{{img/}}
 
 % ============= Headings / Foot =============
 \pagestyle{fancy}
+% Remove all headers and footers
+\fancyhf{}
 
+% Specify what to print in each page 
+
+% Left header
 \lhead{}
+% Center header
 \chead{}
+% Right header
 \rhead{\slshape \leftmark}
 
+% Left footer
 \lfoot{}
-\cfoot{}
-\rfoot{\thepage}
+% Center footer
+\cfoot{\thepage}
+% Right footer
+\rfoot{}
+
 
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% ============= Start of the document =============
+% ============= DOCUMENT INTRO =============
 \begin{document}
-
-%These pages rae without head, foot and page number
+%These pages are without head, foot and page number
 \pagestyle{empty}
 \include{FrontCover}
-%%We add an empty page becasue the back of this page has to be empty
+% We add an empty page becasue the back of this page has to be empty
 \newpage 
+% No footer or header info in this page
 \thispagestyle{empty}
-\quad  \addtocounter{page}{-1}
-\newpage
+% Need to write quad (space for "M", because otherwise latex runtime optimizes the page away)
+\quad
+% No counter for this page (empty), so we reduce the number of pages
+\addtocounter{page}{-1}
 
+% We add a new page for the table of contents
+\newpage
+% We dont want any fancy header or footer
 \pagestyle{plain}
+% Specify the number system as ROMAN for now
 \pagenumbering{Roman}
 %Here we add the table of contents before everything else
 \tableofcontents
-
 %After the table of contents we add a list of figures 
 \listoffigures
-
 %And then the abbreviations
 \include{Abbreviations}
 
+% ============ DOCUMENT CONTENT ======================
 % Here we start with the document
 % pagestyle activation for the whole document
 \pagestyle{headings}
+% We want numbers
 \pagenumbering{arabic}
+
+% First the intro
 \include{Introduction}
 \newpage
+% Then the basics
 \include{Basics}
 \newpage
+% Then the implementation of the project
 \include{Development}
 
 % ============== THE END ==================
