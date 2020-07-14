@@ -1,5 +1,9 @@
+% ================ Document Header ==================
+
 \documentclass[12pt, a4paper, headsepline]{scrreprt}
-\usepackage[left= 2.5cm,right = 2cm, bottom = 4 cm]{geometry}
+
+% We use the package geometry withthe following options:
+\usepackage[left=2.5cm, right=2cm, bottom=4cm]{geometry}
 
 % If you want to use german then uncomment the following lines
 %\usepackage[ngerman]{babel}
@@ -20,23 +24,32 @@
 \usepackage{hyperref}
 \usepackage[nohyperlinks, withpage, smaller]{acronym}
 \usetikzlibrary{matrix,fadings,calc,positioning,decorations.pathreplacing,arrows}
+
+% With the following bibliographystyle we list the references
+% based on the order reference in the document
 \bibliographystyle{unsrt}
-% Set the graphics path
+% Set the graphics path to the img folder in the same folder as this document
 \graphicspath{{img/}}
 
 % ============= Headings / Foot =============
+
+% We will use our own pagestyle
 \pagestyle{fancy}
-% Remove all headers and footers
+% This command removes all headers and footers
 \fancyhf{}
 
 % Specify what to print in each page 
+
+% Header definition
 
 % Left header
 \lhead{}
 % Center header
 \chead{}
 % Right header
-\rhead{\slshape \leftmark}
+\rhead{\leftmark}
+
+% Footer definition
 
 % Left footer
 \lfoot{}
@@ -45,18 +58,21 @@
 % Right footer
 \rfoot{}
 
-
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% ============= DOCUMENT INTRO =============
+% ============= Document Start =============
+
 \begin{document}
+
 %These pages are without head, foot and page number
 \pagestyle{empty}
+
 \include{FrontCover}
 % We add an empty page becasue the back of this page has to be empty
 \newpage 
 % No footer or header info in this page
+% With this command we can set the pagestyle for individual pages
 \thispagestyle{empty}
 % Need to write quad (space for "M", because otherwise latex runtime optimizes the page away)
 \quad
@@ -67,19 +83,19 @@
 \newpage
 % We dont want any fancy header or footer
 \pagestyle{plain}
-% Specify the number system as ROMAN for now
+% Specify the number system as Roman for now, until the document starts
 \pagenumbering{Roman}
-%Here we add the table of contents before everything else
+% Here we add the table of contents before everything else
 \tableofcontents
-%After the table of contents we add a list of figures 
+% After the table of contents we add a list of figures 
 \listoffigures
-%And then the abbreviations
+% And then the abbreviations
 \include{Abbreviations}
 
-% ============ DOCUMENT CONTENT ======================
-% Here we start with the document
+% ============ Document Content ======================
+% Here we start with the document content
 % pagestyle activation for the whole document
-\pagestyle{headings}
+\pagestyle{fancy}
 % We want numbers
 \pagenumbering{arabic}
 
